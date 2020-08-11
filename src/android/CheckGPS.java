@@ -7,7 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,7 +15,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 //import android.support.v4.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.app.ActivityCompat;
+//import androidx.core.app.ActivityCompat;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -55,8 +55,10 @@ public class CheckGPS extends CordovaPlugin{
   
   public void requestContactPermission(CallbackContext CallbackContext) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+			
+				Context context = this.cordova.getActivity().getApplicationContext();
+            if (CallbackContext.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                if (context.shouldShowRequestPermissionRationale(this,
                         android.Manifest.permission.READ_CONTACTS)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("Read Contacts permission");
@@ -74,7 +76,7 @@ public class CheckGPS extends CordovaPlugin{
                     });
                     builder.show();
                 } else {
-                    ActivityCompat.requestPermissions(this,
+                    context.requestPermissions(this,
                             new String[]{android.Manifest.permission.READ_CONTACTS},
                             PERMISSIONS_REQUEST_READ_CONTACTS);
                 }
