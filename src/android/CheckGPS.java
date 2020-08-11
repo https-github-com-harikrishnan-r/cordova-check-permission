@@ -14,7 +14,7 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 //import android.support.v4.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+//import androidx.core.content.ContextCompat;
 //import androidx.core.app.ActivityCompat;
 //import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
